@@ -9,6 +9,7 @@ def test_hosts_file(host):
     assert f.user == "root"
     assert f.group == "root"
 
+
 def test_nullmailer_remotes(host):
     """Assert remotes config file exists."""
     remotes = host.file('/etc/nullmailer/remotes')
@@ -16,5 +17,16 @@ def test_nullmailer_remotes(host):
     assert remotes.exists
     assert remotes.user == 'mail'
     assert remotes.group == 'mail'
-
+    assert remotes.mode == 0o600
     assert remotes.contains('smtp port=587')
+
+
+def test_nullmailer_adminaddr(host):
+    """Assert adminaddr config file exists."""
+    remotes = host.file('/etc/nullmailer/adminaddr')
+
+    assert remotes.exists
+    assert remotes.user == 'mail'
+    assert remotes.group == 'mail'
+    assert remotes.mode == 0o644
+    assert remotes.contains('admin@example.com')

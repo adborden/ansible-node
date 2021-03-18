@@ -8,13 +8,21 @@
       - reboot-notifier
       - unattended-upgrades
 
-- name: configure nullmailer
+- name: configure nullmailer remote
   copy:
     content: "{{ nullmailer_remotes }}"
     dest: /etc/nullmailer/remotes
     owner: mail
     group: mail
     mode: "0600"
+
+- name: configure nullmailer admin address
+  copy:
+    content: "{{ nullmailer_admin_email }}"
+    dest: /etc/nullmailer/adminaddr
+    owner: mail
+    group: mail
+    mode: "0644"
 
 - name: enable prometheus node_exporter
   service: name=prometheus-node-exporter state=started enabled=yes

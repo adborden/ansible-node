@@ -6,4 +6,5 @@
       include_role:
         name: "adborden.node"
       vars:
+        nullmailer_admin_email: admin@example.com
         nullmailer_remotes: smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=examplepassword
