@@ -1,0 +1,14 @@
+---
+- name: Reboot
+  hosts: all
+  serial: 1
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: check if reboot is required
+      stat: path=/var/run/reboot-required
+      register: reboot_required
+
+    - name: reboot
+      reboot:
+      when: force_reboot is defined or reboot_required.stat.exists
