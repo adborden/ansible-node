@@ -26,3 +26,5 @@
 
 - name: enable prometheus node_exporter
   service: name=prometheus-node-exporter state=started enabled=yes
+  tags:
+    - molecule-notest

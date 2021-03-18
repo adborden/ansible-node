@@ -3,6 +3,17 @@
 Configure a node.
 
 
+## Usage
+
+Install dependencies.
+
+    $ pipenv sync
+
+Run the provision playbook.
+
+    $ make provision
+
+
 ## TODO
 
 - [ ] node_exporter for prometheus
