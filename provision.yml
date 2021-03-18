@@ -4,6 +4,10 @@
   become: yes
   roles:
     - role: adborden.node
-      admin_email: "{{ secret_admin_email }}"
+      monit_admin_email: "{{ admin_email }}"
+      monit_admin_user: "{{ secret_monit_admin_user }}"
+      monit_admin_password: "{{ secret_monit_admin_password }}"
       nullmailer_admin_email: "{{ admin_email }}"
       nullmailer_remotes: "{{ secret_nullmailer_remotes }}"
+  vars:
+    admin_email: "{{ secret_admin_email }}"

@@ -6,5 +6,8 @@
       include_role:
         name: "adborden.node"
       vars:
+        monit_admin_email: monit@example.com
+        monit_admin_user: admin
+        monit_admin_password: monit-password
         nullmailer_admin_email: admin@example.com
         nullmailer_remotes: smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=examplepassword

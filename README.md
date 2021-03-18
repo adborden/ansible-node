@@ -16,8 +16,9 @@ Run the provision playbook.
 
 ## TODO
 
-- [ ] node_exporter for prometheus
-- [ ] email for alerting
+- [x] node_exporter for prometheus
+- [x] email for alerting
 - [ ] auto updates
-- [ ] monit alerting
+- [x] monit alerting
+- [ ] ufw
 - [ ] ssh hardening
