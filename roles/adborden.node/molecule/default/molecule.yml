@@ -1,0 +1,12 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: ubuntu-focal
+    image: docker.io/library/ubuntu:focal
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra

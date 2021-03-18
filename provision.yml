@@ -1,0 +1,8 @@
+---
+- name: Provision
+  hosts: all
+  become: yes
+  roles:
+    - role: adborden.node
+      nullmailer_remotes: |
+        smtp.gmail.com smtp port=587 starttls user={{ secret_smtp_user }} pass={{ secret_smtp_password }}

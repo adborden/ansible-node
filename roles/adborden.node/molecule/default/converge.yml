@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include adborden.node"
+      include_role:
+        name: "adborden.node"
+      vars:
+        nullmailer_remotes: smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=examplepassword

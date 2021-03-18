@@ -1,0 +1,17 @@
+---
+- name: install os packages
+  apt: package={{ packages }} update_cache=yes cache_valid_time={{ 12 * 3600 }}
+  vars:
+    packages:
+      - nullmailer
+      - prometheus-node-exporter
+      - reboot-notifier
+      - unattended-upgrades
+
+- name: configure nullmailer
+  copy:
+    content: "{{ nullmailer_remotes }}"
+    dest: /etc/nullmailer/remotes
+    owner: root
+    group: root
+    mode: "0600"
