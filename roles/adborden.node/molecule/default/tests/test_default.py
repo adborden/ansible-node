@@ -14,5 +14,7 @@ def test_nullmailer_remotes(host):
     remotes = host.file('/etc/nullmailer/remotes')
 
     assert remotes.exists
-    assert remotes.user == 'root'
-    assert remotes.group == 'root'
+    assert remotes.user == 'mail'
+    assert remotes.group == 'mail'
+
+    assert remotes.contains('smtp port=587')

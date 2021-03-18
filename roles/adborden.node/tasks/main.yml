@@ -12,6 +12,9 @@
   copy:
     content: "{{ nullmailer_remotes }}"
     dest: /etc/nullmailer/remotes
-    owner: root
-    group: root
+    owner: mail
+    group: mail
     mode: "0600"
+
+- name: enable prometheus node_exporter
+  service: name=prometheus-node-exporter state=started enabled=yes
