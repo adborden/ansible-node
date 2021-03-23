@@ -1,0 +1,9 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: install assumed os packages
+      apt: package={{ packages }} update_cache=yes cache_valid_time={{ 6 * 3600 }}
+      vars:
+        packages:
+          - tzdata
