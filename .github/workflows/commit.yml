@@ -1,0 +1,21 @@
+---
+name: commit
+
+on:
+  push:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: install pipenv
+        run: pip install --upgrade pipenv
+      - name: install dependencies
+        run: make setup
+      - name: test
+        run: make test
