@@ -10,6 +10,6 @@
       nullmailer_admin_email: "{{ admin_email }}"
       nullmailer_remotes: "{{ secret_nullmailer_remotes }}"
   vars_files:
-    - secrets/vars.yml
+    - vars.yml
   vars:
     admin_email: "{{ secret_admin_email }}"

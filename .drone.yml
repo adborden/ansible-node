@@ -11,4 +11,5 @@ steps:
       - pip install --upgrade pipenv
       # TODO use make
       - pipenv sync
+      - touch vars.yml
       - pipenv run ansible-playbook provision.yml

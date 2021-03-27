@@ -1,0 +1,6 @@
+---
+secret_admin_email: admin@example.com
+secret_monit_admin_user: admin
+secret_monit_admin_password: monit-password
+secret_nullmailer_remotes: |
+  smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=gmail-password
