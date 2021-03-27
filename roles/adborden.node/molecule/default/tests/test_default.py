@@ -1,5 +1,8 @@
 """Role testing files using testinfra."""
 
+deploy_user = 'deploy'
+deploy_home = '/var/lib/deploy'
+
 
 def test_hosts_file(host):
     """Validate /etc/hosts file."""
@@ -8,6 +11,63 @@ def test_hosts_file(host):
     assert f.exists
     assert f.user == "root"
     assert f.group == "root"
+
+
+def test_deploy_user(host):
+    """Assert deploy user exists."""
+    deploy = host.user(deploy_user)
+
+    assert deploy.exists
+    assert len(deploy.groups) == 1
+    assert deploy_user in deploy.groups
+    assert deploy.groups == [deploy_user]
+    assert deploy.home == deploy_home
+    assert deploy.password == '!'
+
+
+def test_deploy_home(host):
+    """Assert deploy user home dir exists."""
+    deploy = host.file(deploy_home)
+
+    assert deploy.exists
+    assert deploy.is_directory
+    # TODO this should be 0o750
+    assert deploy.mode == 0o755
+    assert deploy.user == deploy_user
+    assert deploy.group == deploy_user
+
+
+def test_deploy_ssh_dir(host):
+    """Assert deploy user ssh dir is configured."""
+    deploy = host.file('%s/.ssh' % deploy_home)
+
+    assert deploy.exists
+    assert deploy.is_directory
+    assert deploy.mode == 0o700
+    assert deploy.user == deploy_user
+    assert deploy.group == deploy_user
+
+
+def test_deploy_ssh_authorized_keys(host):
+    """Assert deploy user is configured with authorized_keys."""
+    deploy = host.file('%s/.ssh/authorized_keys' % deploy_home)
+
+    assert deploy.exists
+    assert deploy.mode == 0o600
+    assert deploy.user == deploy_user
+    assert deploy.group == deploy_user
+    assert deploy.content == b'ssh-rsa key-data-test comment\n'
+
+
+def test_deploy_sudo(host):
+    """Assert deploy user is configured with sudo access."""
+    deploy = host.file('/etc/sudoers.d/90-deploy.conf')
+
+    assert deploy.exists
+    assert deploy.mode == 0o440
+    assert deploy.user == 'root'
+    assert deploy.group == 'root'
+    assert deploy.content == b'deploy ALL=(ALL) NOPASSWD:ALL\n'
 
 
 def test_nullmailer_remotes(host):

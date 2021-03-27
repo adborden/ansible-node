@@ -11,3 +11,5 @@
         monit_admin_password: monit-password
         nullmailer_admin_email: admin@example.com
         nullmailer_remotes: smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=examplepassword
+        node_deploy_ssh_keys:
+          ssh-rsa key-data-test comment

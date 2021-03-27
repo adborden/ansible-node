@@ -12,3 +12,4 @@ provision:
 
 test:
 	cd roles/adborden.node && pipenv run molecule test --all
+	@echo ok

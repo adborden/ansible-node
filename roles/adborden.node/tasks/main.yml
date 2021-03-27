@@ -20,6 +20,31 @@
       - reboot-notifier
       - unattended-upgrades
 
+- name: create deploy user
+  ansible.builtin.user:
+    name: deploy
+    comment: automated deploy user
+    groups: []
+    home: /var/lib/deploy
+    system: yes
+    state: present
+
+- name: authorize ssh keys for deploy user
+  ansible.posix.authorized_key:
+    user: deploy
+    exclusive: yes
+    key: "{{ node_deploy_ssh_keys }}"
+    state: present
+
+- name: authorize sudo access for deploy user
+  copy:
+    content: |
+      deploy ALL=(ALL) NOPASSWD:ALL
+    dest: /etc/sudoers.d/90-deploy.conf
+    owner: root
+    group: root
+    mode: "0440"
+
 - name: configure nullmailer remote
   copy:
     content: "{{ nullmailer_remotes }}"
