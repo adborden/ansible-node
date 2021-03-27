@@ -8,6 +8,7 @@
   reboot:
   when: timezone is changed
   tags:
+    - skip_ansible_lint
     - molecule-notest
 
 - name: install os packages
