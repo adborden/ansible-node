@@ -1,0 +1,14 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: provision
+    image: python:3.9-alpine
+    commands:
+      - apk add --update cargo gcc libffi-dev make musl-dev openssl-dev python3-dev
+      - pip install --upgrade pipenv
+      # TODO use make
+      - pipenv sync
+      - pipenv run ansible-playbook provision.yml
