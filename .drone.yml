@@ -10,7 +10,7 @@ steps:
       SSH_PRIVATE_KEY:
         from_secret: ssh_private_key
     commands:
-      - apk add --update cargo gcc libffi-dev make musl-dev openssl-dev python3-dev
+      - apk add --update cargo gcc libffi-dev make musl-dev openssh-client openssl-dev python3-dev
       - pip install --upgrade pipenv
       - pipenv sync
       - touch vars.yml
