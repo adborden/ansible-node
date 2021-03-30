@@ -1,4 +1,4 @@
 [raspberry-pi]
-home.lunarkittylanding.party ansible_ssh_user=ubuntu
-rpi-printer.lan ansible_ssh_user=pi ansible_python_interpreter=/usr/bin/python3
-unifi.lan ansible_ssh_user=ubuntu
+home.lunarkittylanding.party
+rpi-printer.lan ansible_python_interpreter=/usr/bin/python3
+unifi.lan

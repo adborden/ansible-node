@@ -41,7 +41,7 @@
   copy:
     content: |
       deploy ALL=(ALL) NOPASSWD:ALL
-    dest: /etc/sudoers.d/90-deploy.conf
+    dest: /etc/sudoers.d/90-deploy
     owner: root
     group: root
     mode: "0440"
