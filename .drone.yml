@@ -3,19 +3,30 @@ kind: pipeline
 type: docker
 name: default
 
+trigger:
+  branch:
+    - main
+  event:
+    - push
+
 steps:
   - name: provision
     image: python:3.9-alpine
     environment:
       SSH_PRIVATE_KEY:
         from_secret: ssh_private_key
+      NODE_ANSIBLE_SECRETS:
+        from_secret: node_ansible_secrets
     commands:
       - apk add --update cargo gcc libffi-dev make musl-dev openssh-client openssl-dev python3-dev
       - pip install --upgrade pipenv
-      - pipenv sync
+      - pipenv install --deploy
       - touch vars.yml
       - mkdir --mode=0700 $HOME/.ssh
       - cp known_hosts $HOME/.ssh/known_hosts
-      - ssh_private_key=$(mktemp)
-      - echo "$SSH_PRIVATE_KEY" > "$ssh_private_key"
-      - pipenv run ansible-playbook --private-key "$ssh_private_key" provision.yml
+      - secrets_dir=$(mktemp -d)
+      - ssh_private_key="$secrets_dir/ssh-private-key"
+      - (umask 0077; printenv SSH_PRIVATE_KEY > "$ssh_private_key")
+      - secret_vars="$secrets_dir/vars.yml"
+      - printenv NODE_ANSIBLE_SECRETS > "$secret_vars"
+      - pipenv run ansible-playbook --private-key "$ssh_private_key" --extra-vars @"$secret_vars" provision.yml
