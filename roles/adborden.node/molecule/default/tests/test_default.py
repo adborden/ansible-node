@@ -61,7 +61,7 @@ def test_deploy_ssh_authorized_keys(host):
 
 def test_deploy_sudo(host):
     """Assert deploy user is configured with sudo access."""
-    deploy = host.file('/etc/sudoers.d/90-deploy.conf')
+    deploy = host.file('/etc/sudoers.d/90-deploy')
 
     assert deploy.exists
     assert deploy.mode == 0o440

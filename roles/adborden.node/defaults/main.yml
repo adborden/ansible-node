@@ -1,2 +1,3 @@
 ---
+monit_admin_user: admin
 node_timezone: America/Los_Angeles
