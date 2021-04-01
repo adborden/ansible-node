@@ -1,4 +1,4 @@
-.PHONY: lint provision setup test
+.PHONY: lint setup test
 
 
 known_hosts:
@@ -9,9 +9,6 @@ lint:
 
 setup:
 	pipenv install --dev
-
-provision:
-	pipenv run ansible-playbook provision.yml
 
 test:
 	cd roles/adborden.node && pipenv run molecule test --all

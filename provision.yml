@@ -9,7 +9,5 @@
       monit_admin_password: "{{ secret_monit_admin_password }}"
       nullmailer_admin_email: "{{ admin_email }}"
       nullmailer_remotes: "{{ secret_nullmailer_remotes }}"
-  vars_files:
-    - vars.yml
   vars:
     admin_email: "{{ secret_admin_email }}"
