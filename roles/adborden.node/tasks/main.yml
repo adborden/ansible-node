@@ -1,4 +1,34 @@
 ---
+- name: assert node_deploy_ssh_keys is defined
+  assert:
+    that:
+      - node_deploy_ssh_keys is defined
+    fail_msg: node_deploy_ssh_keys is required but it is not defined
+
+- name: assert monit_admin_email is defined
+  assert:
+    that:
+      - monit_admin_email is defined
+    fail_msg: monit_admin_email is required but it is not defined
+
+- name: assert monit_admin_password is defined
+  assert:
+    that:
+      - monit_admin_password is defined
+    fail_msg: monit_admin_password is required but it is not defined
+
+- name: assert nullmailer_admin_email is defined
+  assert:
+    that:
+      - nullmailer_admin_email is defined
+    fail_msg: nullmailer_admin_email is required but it is not defined
+
+- name: assert nullmailer_remotes is defined
+  assert:
+    that:
+      - nullmailer_remotes is defined
+    fail_msg: nullmailer_remotes is required but it is not defined
+
 - name: set timezone
   community.general.timezone:
     name: "{{ node_timezone }}"
