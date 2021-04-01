@@ -1,11 +1,15 @@
 .PHONY: lint setup test
 
+PLAYBOOKS := \
+  provision.yml \
+  reboot.yml \
+  upgrade.yml
 
 known_hosts:
 	ssh-keyscan $(shell pipenv run ansible-inventory  --list | jq -r '.[] | select(.hosts) | .hosts | flatten | .[]') > known_hosts
 
 lint:
-	pipenv run ansible-lint provision.yml
+	pipenv run ansible-lint $(PLAYBOOKS)
 
 setup:
 	pipenv install --dev

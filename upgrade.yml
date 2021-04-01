@@ -1,0 +1,9 @@
+---
+- name: Upgrade
+  hosts: all
+  tasks:
+    - name: upgrade os packages
+      apt: upgrade=dist autoclean=yes autoremove=yes cache_valid_time={{ 12 * 3600 }}
+
+- name: Reboot
+  import_playbook: reboot.yml
