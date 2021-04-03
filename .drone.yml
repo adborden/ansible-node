@@ -18,7 +18,9 @@ steps:
       NODE_ANSIBLE_SECRETS:
         from_secret: node_ansible_secrets
     commands:
-      - apk add --update cargo gcc libffi-dev make musl-dev openssh-client openssl-dev python3-dev
+      - apk add --update cargo gcc git gnupg libffi-dev make musl-dev openssh-client openssl-dev python3-dev
+      - gpg --recv-key 4AEE18F83AFDEB23 AEE2B24D59FD94F6
+      - git verify-commit $DRONE_COMMIT
       - pip install --upgrade pipenv
       - pipenv install --deploy
       - touch vars.yml
@@ -30,3 +32,8 @@ steps:
       - secret_vars="$secrets_dir/vars.yml"
       - printenv NODE_ANSIBLE_SECRETS > "$secret_vars"
       - pipenv run ansible-playbook --private-key "$ssh_private_key" --extra-vars @"$secret_vars" provision.yml
+---
+kind: signature
+hmac: b0210d540de6a6c06b8aed0e46422e5ee56fd750dc15f553a18967cc3747abd5
+
+...
