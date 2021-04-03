@@ -28,3 +28,12 @@ known_hosts file.
 - [x] monit alerting
 - [ ] ufw
 - [ ] ssh hardening
+
+
+## Continuous integration
+
+Add these secrets to GitHub Actions.
+
+Name | Description
+---- | -----------
+SNYK_TOKEN | [Snyk](https://snyk.io) personal API token.

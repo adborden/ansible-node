@@ -13,6 +13,10 @@ jobs:
         uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
+      - name: snyk
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: install pipenv
         run: pip install --upgrade pipenv
       - name: install dependencies
