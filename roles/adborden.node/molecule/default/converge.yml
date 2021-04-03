@@ -13,3 +13,7 @@
         nullmailer_remotes: smtp.gmail.com smtp port=587 starttls user=example@gmail.com pass=examplepassword
         node_deploy_ssh_keys:
           ssh-rsa key-data-test comment
+        node_ufw_rules:
+          - rule: allow
+            port: 5000
+            proto: udp

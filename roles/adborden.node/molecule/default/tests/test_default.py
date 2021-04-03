@@ -146,3 +146,10 @@ def test_monit_prometheus_node_exporter(host):
     assert conf.group == 'root'
     assert conf.mode == 0o644
     assert conf.contains('prometheus-node-exporter')
+
+
+def test_ufw_package(host):
+    """Assert ufw is installed."""
+    ufw = host.package('ufw')
+
+    assert ufw.is_installed

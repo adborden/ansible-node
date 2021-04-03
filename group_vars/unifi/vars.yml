@@ -1,0 +1,23 @@
+---
+# https://help.ui.com/hc/en-us/articles/218506997-UniFi-Ports-Used
+node_ufw_rules:
+  - port: 1900  # "Make controller discoverable on L2 network" in controller settings
+    proto: udp
+  - port: 3478  # STUN
+    proto: udp
+  - port: 5353  # multicast DNS
+    proto: udp
+  - port: 5656:5699  # AP-EDU broadcasting
+    proto: udp
+  - port: 6789  # UniFi mobile speed test
+    proto: tcp
+  - port: 8080  # device and controller communication
+    proto: tcp
+  - port: 8443  # GUI/API as seen in a web browser
+    proto: tcp
+  - port: 8880  # HTTP portal redirection
+    proto: tcp
+  - port: 8843  # HTTPS portal redirection
+    proto: tcp
+  - port: 10001  # device discovery
+    proto: udp

@@ -1,3 +1,6 @@
 ---
 monit_admin_user: admin
+node_lan_cidr: "192.168.1.0/24"
+node_ufw_enabled: true
+node_ufw_rules: []
 node_timezone: America/Los_Angeles

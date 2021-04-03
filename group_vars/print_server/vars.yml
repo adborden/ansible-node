@@ -1,0 +1,14 @@
+---
+node_ufw_rules:
+  - port: 137  # nmbd, netbios-ns
+    proto: udp
+  - port: 138  # nmbd, netbios-ns
+    proto: udp
+  - port: 139  # smbd, netbios session service
+    proto: tcp
+  - port: 445  # smbd, microsoft-ds
+    proto: tcp
+  - port: 631  # cups
+    proto: any
+  - port: 5353  # avahi, mdns
+    proto: udp

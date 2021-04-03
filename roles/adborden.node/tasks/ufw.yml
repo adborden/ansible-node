@@ -1,0 +1,33 @@
+---
+- name: allow ssh
+  community.general.ufw:
+    name: OpenSSH
+    rule: allow
+    from: "{{ node_lan_cidr }}"
+
+- name: allow dhcp client
+  community.general.ufw:
+    rule: allow
+    port: "68"
+    proto: udp
+    from: "{{ node_lan_cidr }}"
+
+- name: allow prometheus-node-exporter
+  community.general.ufw:
+    rule: allow
+    port: "9100"
+    proto: tcp
+    from: "{{ node_lan_cidr }}"
+
+- name: apply firewall rules
+  community.general.ufw:
+    rule: "{{ item.rule | default('allow') }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto | default('any') }}"
+    from: "{{ item.from | default(node_lan_cidr) }}"
+  with_items: "{{ node_ufw_rules }}"
+
+- name: deny all traffic by default
+  community.general.ufw:
+    policy: deny
+    state: enabled

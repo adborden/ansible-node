@@ -49,7 +49,14 @@
       - prometheus-node-exporter
       - monit
       - reboot-notifier
+      - ufw
       - unattended-upgrades
+
+- name: enable firewall
+  import_tasks: ufw.yml
+  when: node_ufw_enabled
+  tags:
+    - molecule-notest
 
 - name: create deploy user
   ansible.builtin.user:

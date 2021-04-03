@@ -2,3 +2,12 @@
 home.lunarkittylanding.party
 rpi-printer.lan ansible_python_interpreter=/usr/bin/python3
 unifi.lan
+
+[unifi]
+unifi.lan
+
+[home_assistant]
+home.lunarkittylanding.party
+
+[print_server]
+rpi-printer.lan

@@ -1,0 +1,8 @@
+---
+node_ufw_rules:
+  - port: 80  # http
+    proto: tcp
+  - port: 443  # https
+    proto: tcp
+  - port: 5353  # mdns
+    proto: udp
