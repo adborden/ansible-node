@@ -1,0 +1,6 @@
+---
+watchdog_timeout: 15
+watchdog_max_load_1: 24
+watchdog_min_memory: 1
+watchdog_logtick: 100
+#watchdog_allocatable_memory: 1  # not supported
