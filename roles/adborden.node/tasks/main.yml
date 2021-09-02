@@ -144,7 +144,7 @@
 - name: configure monit (prometheus)
   copy:
     content: |
-      check process prometheus-node-exporter
+      check process prometheus-node-exporter matching prometheus-node-exporter
         start program = "/bin/systemctl start prometheus-node-exporter"
         stop program = "/bin/systemctl stop prometheus-node-exporter"
         if failed port 9100 protocol imap for 5 cycles then restart
