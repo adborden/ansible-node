@@ -6,14 +6,14 @@ PLAYBOOKS := \
   upgrade.yml
 
 known_hosts:
-	ssh-keyscan $(shell pipenv run ansible-inventory  --list | jq -r '.[] | select(.hosts) | .hosts | flatten | .[]') > $@
+	ssh-keyscan $(shell poetry run ansible-inventory  --list | jq -r '.[] | select(.hosts) | .hosts | flatten | .[]') > $@
 
 lint:
-	pipenv run ansible-lint $(PLAYBOOKS)
+	poetry run ansible-lint $(PLAYBOOKS)
 
 setup:
-	pipenv install --dev
+	poetry install --with=dev
 
 test:
-	cd roles/adborden.node && pipenv run molecule test --all
+	cd roles/adborden.node && poetry run molecule test --all
 	@echo ok

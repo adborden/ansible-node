@@ -1,3 +1,4 @@
+.ansible
 __pycache__
 vars.yml
 secrets

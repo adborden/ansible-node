@@ -1,7 +1,7 @@
 ---
 - name: Provision
   hosts: all
-  become: yes
+  become: true
   roles:
     - role: adborden.node
       monit_admin_email: "{{ admin_email }}"

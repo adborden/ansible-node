@@ -1,0 +1,23 @@
+[project]
+name = "ansible-node"
+version = "0.1.0"
+description = ""
+authors = [{ name = "Aaron D Borden", email = "adborden@a14n.net" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["ansible (>=13.6.0,<14.0.0)"]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+  "ansible-lint (>=26.4.0,<27.0.0)",
+  "molecule (>=26.4.0,<27.0.0)",
+  "pytest-testinfra (>=10.2.2,<11.0.0)",
+  "molecule-plugins[podman] (>=25.8.12,<26.0.0)",
+]

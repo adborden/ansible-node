@@ -1,35 +1,35 @@
 ---
-- name: assert node_deploy_ssh_keys is defined
-  assert:
+- name: Assert node_deploy_ssh_keys is defined
+  ansible.builtin.assert:
     that:
       - node_deploy_ssh_keys is defined
     fail_msg: node_deploy_ssh_keys is required but it is not defined
 
-- name: assert monit_admin_email is defined
-  assert:
+- name: Assert monit_admin_email is defined
+  ansible.builtin.assert:
     that:
       - monit_admin_email is defined
     fail_msg: monit_admin_email is required but it is not defined
 
-- name: assert monit_admin_password is defined
-  assert:
+- name: Assert monit_admin_password is defined
+  ansible.builtin.assert:
     that:
       - monit_admin_password is defined
     fail_msg: monit_admin_password is required but it is not defined
 
-- name: assert nullmailer_admin_email is defined
-  assert:
+- name: Assert nullmailer_admin_email is defined
+  ansible.builtin.assert:
     that:
       - nullmailer_admin_email is defined
     fail_msg: nullmailer_admin_email is required but it is not defined
 
-- name: assert nullmailer_remotes is defined
-  assert:
+- name: Assert nullmailer_remotes is defined
+  ansible.builtin.assert:
     that:
       - nullmailer_remotes is defined
     fail_msg: nullmailer_remotes is required but it is not defined
 
-- name: set timezone
+- name: Set timezone
   community.general.timezone:
     name: "{{ node_timezone }}"
   register: timezone
@@ -41,8 +41,11 @@
     - skip_ansible_lint
     - molecule-notest
 
-- name: install os packages
-  apt: package={{ packages }} update_cache=yes cache_valid_time={{ 12 * 3600 }}
+- name: Install os packages
+  ansible.builtin.apt:
+    package: "{{ packages }}"
+    update_cache: "yes"
+    cache_valid_time: "{{ 12 * 3600 }}"
   vars:
     packages:
       - nullmailer
@@ -51,24 +54,24 @@
       - reboot-notifier
       - unattended-upgrades
 
-- name: create deploy user
+- name: Create deploy user
   ansible.builtin.user:
     name: deploy
     comment: automated deploy user
     groups: []
     home: /var/lib/deploy
-    system: yes
+    system: true
     state: present
 
-- name: authorize ssh keys for deploy user
+- name: Authorize ssh keys for deploy user
   ansible.posix.authorized_key:
     user: deploy
-    exclusive: yes
+    exclusive: true
     key: "{{ node_deploy_ssh_keys }}"
     state: present
 
-- name: authorize sudo access for deploy user
-  copy:
+- name: Authorize sudo access for deploy user
+  ansible.builtin.copy:
     content: |
       deploy ALL=(ALL) NOPASSWD:ALL
     dest: /etc/sudoers.d/90-deploy
@@ -76,29 +79,32 @@
     group: root
     mode: "0440"
 
-- name: configure nullmailer remote
-  copy:
+- name: Configure nullmailer remote
+  ansible.builtin.copy:
     content: "{{ nullmailer_remotes }}"
     dest: /etc/nullmailer/remotes
     owner: mail
     group: mail
     mode: "0600"
 
-- name: configure nullmailer admin address
-  copy:
+- name: Configure nullmailer admin address
+  ansible.builtin.copy:
     content: "{{ nullmailer_admin_email }}"
     dest: /etc/nullmailer/adminaddr
     owner: mail
     group: mail
     mode: "0644"
 
-- name: enable prometheus node_exporter
-  service: name=prometheus-node-exporter state=started enabled=yes
+- name: Enable prometheus node_exporter
+  ansible.builtin.service:
+    name: prometheus-node-exporter
+    state: started
+    enabled: "yes"
   tags:
     - molecule-notest
 
-- name: configure monit (system)
-  blockinfile:
+- name: Configure monit (system)
+  ansible.builtin.blockinfile:
     block: |
       set alert {{ monit_admin_email }}
 
@@ -122,8 +128,8 @@
     group: root
     mode: "0600"
 
-- name: configure common monit configs
-  file:
+- name: Configure common monit configs
+  ansible.builtin.file:
     src: /etc/monit/conf-available/{{ item }}
     dest: /etc/monit/conf-enabled/{{ item }}
     state: link
@@ -131,8 +137,8 @@
     - cron
     - openssh-server
 
-- name: configure monit (root)
-  copy:
+- name: Configure monit (root)
+  ansible.builtin.copy:
     content: |
       check filesystem root path /
         if space usage > 90% for 5 cycles then alert
@@ -141,8 +147,8 @@
     group: root
     mode: "0644"
 
-- name: configure monit (prometheus)
-  copy:
+- name: Configure monit (prometheus)
+  ansible.builtin.copy:
     content: |
       check process prometheus-node-exporter matching prometheus-node-exporter
         start program = "/bin/systemctl start prometheus-node-exporter"

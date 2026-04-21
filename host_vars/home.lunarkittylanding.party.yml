@@ -1,0 +1,3 @@
+---
+watchdog_interfaces:
+  - wlan0

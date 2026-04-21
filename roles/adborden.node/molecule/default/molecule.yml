@@ -2,11 +2,13 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: podman
 platforms:
-  - name: ubuntu-focal
-    image: docker.io/library/ubuntu:focal
+  - name: ubuntu-jammy
+    image: docker.io/library/ubuntu:jammy
 provisioner:
   name: ansible
 verifier:
   name: testinfra
+  options:
+    v: true
