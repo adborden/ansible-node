@@ -627,6 +627,29 @@ rich = ">=9.5.1"
 wcmatch = ">=8.1.2"
 
 [[package]]
+name = "molecule-plugins"
+version = "25.8.12"
+description = "Molecule Plugins"
+optional = false
+python-versions = ">=3.10"
+groups = ["dev"]
+files = [
+    {file = "molecule_plugins-25.8.12-py3-none-any.whl", hash = "sha256:c5b8ceb209a5ff87326631d60408f8d08b9431b2e339dad4c620130b50279ce0"},
+    {file = "molecule_plugins-25.8.12.tar.gz", hash = "sha256:75f32763e90275bfc24bcc0d27b9bb22ac973658bf902b2e3e8af8e2a1c32083"},
+]
+
+[package.dependencies]
+molecule = ">=25.1.0"
+
+[package.extras]
+docker = ["docker (>=4.3.1)", "requests", "selinux ; sys_platform == \"linux\"", "selinux ; sys_platform == \"linux2\""]
+gce = ["google-auth (>=2.28.2)", "requests (>=2.31.0)"]
+openstack = ["openstacksdk (>=1.1.0)"]
+selinux = ["selinux ; sys_platform == \"linux\"", "selinux ; sys_platform == \"linux2\""]
+test = ["molecule[test] (>=25.1.0)", "pytest-helpers-namespace (>=2019.1.8)"]
+vagrant = ["python-vagrant"]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.1.0"
 description = "Type system extensions for programs checked with the mypy type checker."
@@ -1230,4 +1253,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "ruff", "sph
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "b20a8b74a59c7f12d6ae143d2226d82b3c88b3b71e1d191e66a5a170ee9a3e15"
+content-hash = "a353c08dd01dd1f66530362765a0ba7de486aba03f0af4b0a9befb3dba418346"

@@ -5,8 +5,7 @@
     - name: Install assumed os packages
       ansible.builtin.apt:
         package: "{{ packages }}"
-        update_cache: "yes"
-        cache_valid_time: "{{ 6 * 3600 }}"
+        update_cache: true
       vars:
         packages:
           - tzdata
