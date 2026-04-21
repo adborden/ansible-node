@@ -3,12 +3,13 @@
   hosts: all
   serial: 1
   gather_facts: false
-  become: yes
+  become: true
   tasks:
-    - name: check if reboot is required
-      stat: path=/var/run/reboot-required
+    - name: Check if reboot is required
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
       register: reboot_required
 
-    - name: reboot
-      reboot:
+    - name: Reboot
+      ansible.builtin.reboot:
       when: force_reboot is defined or reboot_required.stat.exists
