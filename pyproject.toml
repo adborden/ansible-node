@@ -5,7 +5,7 @@ description = ""
 authors = [{ name = "Aaron D Borden", email = "adborden@a14n.net" }]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["ansible (>=13.6.0,<14.0.0)"]
+dependencies = ["ansible (>=14.1.0,<14.2.0)"]
 
 [tool.poetry]
 package-mode = false
