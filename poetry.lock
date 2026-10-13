@@ -618,14 +618,14 @@ wcmatch = ">=8.1.2"
 
 [[package]]
 name = "molecule-plugins"
-version = "26.7.15"
+version = "26.10.12"
 description = "Molecule Plugins"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "molecule_plugins-26.7.15-py3-none-any.whl", hash = "sha256:191dfa7fd965c637e3b61d0929f2fb741f0df1181a250df62eca3657b1182794"},
-    {file = "molecule_plugins-26.7.15.tar.gz", hash = "sha256:df4cab8d9e13ed448fc33d72af1fbae54883e9255a42c021ae7e875dfd3374c1"},
+    {file = "molecule_plugins-26.10.12-py3-none-any.whl", hash = "sha256:a618b60016eac397d8e279eeb5c494a9cee6d33103dbe5222891df81657759f1"},
+    {file = "molecule_plugins-26.10.12.tar.gz", hash = "sha256:03f79df9f7d6d6107ad9507f6c58724bbd18c21afb6f020fc532361b343ea333"},
 ]
 
 [package.dependencies]
@@ -1242,4 +1242,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "ruff", "sph
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "e73de99e6a23c67a8d560d25a3e09820d4e761cf45ec01613dd0ca1575c7018c"
+content-hash = "868bd1c5b4bfd43a3af91d07aa55b46c20b58ccf72f1d1dcdda86f8fbe39d09d"
