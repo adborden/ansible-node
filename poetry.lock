@@ -2,18 +2,18 @@
 
 [[package]]
 name = "ansible"
-version = "14.6.0"
+version = "15.0.0"
 description = "Radically simple IT automation"
 optional = false
-python-versions = ">=3.12"
+python-versions = ">=3.13"
 groups = ["main"]
 files = [
-    {file = "ansible-14.6.0-py3-none-any.whl", hash = "sha256:a9d06a68d73a06eb4651ac7ea0c3b0ad18ddffbdb4feb745855dea70e8891e75"},
-    {file = "ansible-14.6.0.tar.gz", hash = "sha256:47cd013f4b6462f15b65485d09b713ae64697036733078f0623f636a94f5df45"},
+    {file = "ansible-15.0.0-py3-none-any.whl", hash = "sha256:c15fa794d926523f0794625ccc4021fe5d799eed1fd60be110e20922fc9086e1"},
+    {file = "ansible-15.0.0.tar.gz", hash = "sha256:28718fc080a750eb4fabaa87e837ce8fbf692f8ce7e929f93f8d29dfc8530c43"},
 ]
 
 [package.dependencies]
-ansible-core = ">=2.21.6,<2.22.0"
+ansible-core = ">=2.22.0,<2.23.0"
 
 [[package]]
 name = "ansible-compat"
@@ -36,14 +36,14 @@ subprocess-tee = ">=0.4.1"
 
 [[package]]
 name = "ansible-core"
-version = "2.21.6"
+version = "2.22.0"
 description = "Radically simple IT automation"
 optional = false
-python-versions = ">=3.12"
+python-versions = ">=3.13"
 groups = ["main", "dev"]
 files = [
-    {file = "ansible_core-2.21.6-py3-none-any.whl", hash = "sha256:c1fc3cbe821176ba4227b1cae8c748e1d28d42dde605e807d23c58f71b6d1a74"},
-    {file = "ansible_core-2.21.6.tar.gz", hash = "sha256:3fa05b4b1af69f2fa19b49dde8edd5a23e693c2c1c3bda2d85fce73bd6cfc36d"},
+    {file = "ansible_core-2.22.0-py3-none-any.whl", hash = "sha256:8285d4cc81c3e3eb2d954e75531724fe0ae154d228475638123451f034a74657"},
+    {file = "ansible_core-2.22.0.tar.gz", hash = "sha256:bf50b4a0cfa985e30585c7ba301897ea7050d224ca49d2816cab10e33a160e1c"},
 ]
 
 [package.dependencies]
@@ -1169,4 +1169,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "ruff", "sph
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "c6a0c34a93d3144581421b77895fc440f03ea1e3d8cbec92432497888aa1c557"
+content-hash = "e2c101e77a041962d9d9914a1680bc68e233d18bc1fc7b3200811902e0c5a060"
