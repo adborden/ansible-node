@@ -681,14 +681,14 @@ files = [
 
 [[package]]
 name = "molecule"
-version = "26.11.0"
+version = "26.11.1"
 description = "Molecule aids in the development and testing of Ansible roles"
 optional = false
 python-versions = ">=3.11"
 groups = ["dev"]
 files = [
-    {file = "molecule-26.11.0-py3-none-any.whl", hash = "sha256:5e48f66e97ce03ba1e9cfdf4a3667db499e960543c91bb62f530c6cd6337dd9b"},
-    {file = "molecule-26.11.0.tar.gz", hash = "sha256:706bb3d9a34e1531cfe1cda294974aad4ccba70af3ecb2d434266e0df73b0c09"},
+    {file = "molecule-26.11.1-py3-none-any.whl", hash = "sha256:dcd147fb60bb66c060e0bf6a3eaa18f34433a18254a6f56f25ac254fb7980f64"},
+    {file = "molecule-26.11.1.tar.gz", hash = "sha256:34035f2852f1c0461539051ec1dd2398492c1e4f370ba507b81a781f322e4147"},
 ]
 
 [package.dependencies]
